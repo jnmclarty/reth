@@ -66,6 +66,7 @@ pub(crate) fn generate_vectors(mut tables: Vec<String>) -> Result<()> {
         (TxHashNumber, PER_TABLE, TABLE),
         (Transactions, 100, TABLE),
         (PlainStorageState, PER_TABLE, DUPSORT),
+        (UniV2OnlyPlainStorageState, PER_TABLE, DUPSORT),
         (PlainAccountState, PER_TABLE, TABLE)
     ]);
 

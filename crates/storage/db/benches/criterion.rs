@@ -31,6 +31,7 @@ pub fn db(c: &mut Criterion) {
     measure_table_db::<TxHashNumber>(&mut group);
     measure_table_db::<Transactions>(&mut group);
     measure_dupsort_db::<PlainStorageState>(&mut group);
+    measure_dupsort_db::<UniV2OnlyPlainStorageState>(&mut group);    
     measure_table_db::<PlainAccountState>(&mut group);
 }
 

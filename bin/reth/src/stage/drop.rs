@@ -72,6 +72,7 @@ impl Command {
                 }
                 StageEnum::Senders => {
                     tx.clear::<tables::TxSenders>()?;
+                    tx.clear::<tables::UniswapV2PairTxRegistration>()?;
                     tx.put::<tables::SyncStage>(
                         StageId::SenderRecovery.to_string(),
                         Default::default(),
@@ -80,6 +81,7 @@ impl Command {
                 StageEnum::Execution => {
                     tx.clear::<tables::PlainAccountState>()?;
                     tx.clear::<tables::PlainStorageState>()?;
+                    tx.clear::<tables::UniV2OnlyPlainStorageState>()?;
                     tx.clear::<tables::AccountChangeSet>()?;
                     tx.clear::<tables::StorageChangeSet>()?;
                     tx.clear::<tables::Bytecodes>()?;

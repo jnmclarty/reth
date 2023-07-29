@@ -172,6 +172,7 @@ tables!([
     (Receipts, TableType::Table),
     (PlainAccountState, TableType::Table),
     (PlainStorageState, TableType::DupSort),
+    (UniV2OnlyPlainStorageState, TableType::DupSort),    
     (Bytecodes, TableType::Table),
     (AccountHistory, TableType::Table),
     (StorageHistory, TableType::Table),
@@ -182,6 +183,7 @@ tables!([
     (AccountsTrie, TableType::Table),
     (StoragesTrie, TableType::DupSort),
     (TxSenders, TableType::Table),
+    (UniswapV2PairTxRegistration, TableType::Table),    
     (SyncStage, TableType::Table),
     (SyncStageProgress, TableType::Table),
     (PruneCheckpoints, TableType::Table)
@@ -310,9 +312,19 @@ table!(
     ( PlainAccountState ) Address | Account
 );
 
+table!(
+    /// Mapping of Transaction Number which registered UniswapV2Pair Address.
+    ( UniswapV2PairTxRegistration ) TxNumber | Address // Similar to a TxSenders?
+);
+
 dupsort!(
     /// Stores the current value of a storage key.
     ( PlainStorageState ) Address | [H256] StorageEntry
+);
+
+dupsort!(
+    /// Stores the current value of a storage key.
+    ( UniV2OnlyPlainStorageState ) Address | [H256] StorageEntry // Similar to a PlainStorageState?
 );
 
 table!(
@@ -448,6 +460,7 @@ mod tests {
         (TableType::Table, Receipts::const_name()),
         (TableType::Table, PlainAccountState::const_name()),
         (TableType::DupSort, PlainStorageState::const_name()),
+        (TableType::DupSort, UniV2OnlyPlainStorageState::const_name()),        
         (TableType::Table, Bytecodes::const_name()),
         (TableType::Table, AccountHistory::const_name()),
         (TableType::Table, StorageHistory::const_name()),
@@ -458,6 +471,7 @@ mod tests {
         (TableType::Table, AccountsTrie::const_name()),
         (TableType::DupSort, StoragesTrie::const_name()),
         (TableType::Table, TxSenders::const_name()),
+        (TableType::Table, UniswapV2PairTxRegistration::const_name()),
         (TableType::Table, SyncStage::const_name()),
         (TableType::Table, SyncStageProgress::const_name()),
         (TableType::Table, PruneCheckpoints::const_name()),

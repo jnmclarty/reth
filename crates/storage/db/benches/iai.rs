@@ -73,5 +73,6 @@ impl_iai!(
     TxHashNumber,
     Transactions,
     PlainStorageState,
+    UniV2OnlyPlainStorageState,    
     PlainAccountState
 );

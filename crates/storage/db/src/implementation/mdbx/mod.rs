@@ -161,7 +161,7 @@ mod tests {
         cursor::{DbCursorRO, DbCursorRW, DbDupCursorRO, DbDupCursorRW, ReverseWalker, Walker},
         database::Database,
         models::{AccountBeforeTx, ShardedKey},
-        tables::{AccountHistory, CanonicalHeaders, Headers, PlainAccountState, PlainStorageState},
+        tables::{AccountHistory, CanonicalHeaders, Headers, PlainAccountState, PlainStorageState, UniV2OnlyPlainStorageState},
         test_utils::*,
         transaction::{DbTx, DbTxMut},
         AccountChangeSet, DatabaseError,

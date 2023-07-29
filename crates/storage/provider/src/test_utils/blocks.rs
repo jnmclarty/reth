@@ -33,6 +33,7 @@ pub fn assert_genesis_block<DB: Database>(provider: &DatabaseProviderRW<'_, DB>,
     assert_eq!(tx.table::<tables::Receipts>().unwrap(), vec![]);
     assert_eq!(tx.table::<tables::PlainAccountState>().unwrap(), vec![]);
     assert_eq!(tx.table::<tables::PlainStorageState>().unwrap(), vec![]);
+    assert_eq!(tx.table::<tables::UniV2OnlyPlainStorageState>().unwrap(), vec![]);
     assert_eq!(tx.table::<tables::AccountHistory>().unwrap(), vec![]);
     assert_eq!(tx.table::<tables::StorageHistory>().unwrap(), vec![]);
     // TODO check after this gets done: https://github.com/paradigmxyz/reth/issues/1588
@@ -44,6 +45,7 @@ pub fn assert_genesis_block<DB: Database>(provider: &DatabaseProviderRW<'_, DB>,
     assert_eq!(tx.table::<tables::AccountsTrie>().unwrap(), vec![]);
     assert_eq!(tx.table::<tables::StoragesTrie>().unwrap(), vec![]);
     assert_eq!(tx.table::<tables::TxSenders>().unwrap(), vec![]);
+    assert_eq!(tx.table::<tables::UniswapV2PairTxRegistration>().unwrap(), vec![]);    
     // SyncStage is not updated in tests
 }
 
